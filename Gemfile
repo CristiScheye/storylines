@@ -13,6 +13,7 @@ gem 'bootstrap-sass'
 gem 'pg'
 
 group :development do
+  gem 'sqlite3'
   gem 'thin'
   gem 'pry'
   gem 'therubyracer', platforms: :ruby

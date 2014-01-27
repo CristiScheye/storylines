@@ -1,0 +1,7 @@
+%h1 Mock Pages
+
+%h3 Links to static pages:
+
+%ul
+  - @mock_views.each do |view|
+    %li= link_to view, action: view

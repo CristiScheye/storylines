@@ -1,10 +1,13 @@
-.navbar.navbar-default
-  .navbar-inner
+.navbar.navbar-default.top-header
+  .container
     .navbar-header
-      %h1 Storyline
+      %h1= link_to 'StoryLine', root_path 
     %ul.nav.navbar-nav.text-center
       %li
-      %li= link_to 'New Story'
+        = link_to do
+          %span.glyphicon.glyphicon-plus 
+          New Story
+      %vr
       %li= link_to 'Contribute to Story'
-      %li= link_to 'Read Finished Stories'
+      %li= link_to 'Read Stories'
       %li= link_to 'How it Works'

@@ -1,0 +1,26 @@
+@media (min-width: 768px){
+    .navbar-nav {
+        margin: 0 auto;
+        display: table;
+        table-layout: fixed;
+        float:none;
+    }
+}
+
+.top-header {
+  background-color: #088A68;  
+
+
+  h1 {
+    a {
+      text-decoration: none;
+      color: white;   
+    }
+  }
+
+  .navbar-nav > li > a {
+    color: #A9F5D0;
+    vertical-align: bottom;
+  }
+}
+

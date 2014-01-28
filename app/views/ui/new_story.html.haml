@@ -1,5 +1,4 @@
-%h1 Start a New Story
-%hr
+=render 'shared/header', header_title: 'Start a New Story'
 
 = form_tag({controller: 'ui', action: 'index'}, method: 'get') do
   = label_tag :title, "What is your story called?"

@@ -1,4 +1,7 @@
 Storyline::Application.routes.draw do
-  get 'ui(/:action)', controller: 'ui'
   root 'ui#index'
+  get 'ui(/:action)', controller: 'ui'
+
+  resources :stories, only: [:new, :create, :show, :index]
+  
 end

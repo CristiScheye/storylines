@@ -1,0 +1,23 @@
+.navbar.navbar-default.top-header
+  .container
+    .navbar-text.pull-right 
+      = link_to 'Login'
+    %h1= link_to 'StoryLine', root_path 
+    %ul.nav.navbar-nav.text-center
+      %li
+        = link_to do
+          %span.glyphicon.glyphicon-plus 
+          New Story
+      %vr
+      %li
+        = link_to do 
+          %span.glyphicon.glyphicon-edit
+          Continue Story
+      %li
+        = link_to do 
+          %span.glyphicon
+          Read Stories
+      %li
+        = link_to do 
+          %span.glyphicon
+          How it Works

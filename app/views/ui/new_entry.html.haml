@@ -1,0 +1,13 @@
+%h1 Add a line to...
+%hr
+
+.container
+  %h3 The Day that Janie Went to Disneyland
+  %p "She wanted to go on Mr. Toad's Wild Ride, but it was closed."
+
+  =form_tag({controller: :ui, action: :index}, method: 'get') do
+    = label_tag :entry, 'What happens next?'
+    = text_area_tag :entry
+    %br
+    = submit_tag 'Add My Line', class: 'btn btn-primary'
+

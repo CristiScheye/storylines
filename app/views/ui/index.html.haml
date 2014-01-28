@@ -4,4 +4,4 @@
 
 %ul
   - @mock_views.each do |view|
-    %li= link_to view, action: view
+    %li= link_to view.titleize, action: view

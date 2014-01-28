@@ -1,0 +1,23 @@
+%h1 Finished Stories
+%hr
+
+- entries = ["Once upon a time (yesterday) I went to the park.", "It was bright and sunny out and there were lots of screaming children.", "Of course, I would be screaming too if there was a giant clown chasing me...", "I bet I could outrun anyone there though, so I'm good.", "Especially if there's cake involved!", "Hopefully a cake with a midget popping out!"]
+- authors = ['abcMan', 'katy_waty', 'mr_bubbles', 'snickerslvr', 'abcMan', 'Bob']
+
+
+.container
+  -['Yesterday at the Park', 'Holy Cow!', 'Plate of Bacon', 'Mambo Number 6'].each do |title|
+    .row
+      .col-md-11.col-md-offset-1
+        %h3= title
+      .col-md-7.col-lg-7.col-md-offset-1.col-lg-offset-1
+        - entries.each_with_index do |entry, index|
+          = entry
+          %sup= "#{index + 1}" 
+      .col-md-3.col-md-offset-1
+        %ol
+          - authors.each do |author|
+            %li= author
+
+
+

@@ -1,0 +1,14 @@
+=render 'shared/header', header_title: 'Start a New Story'
+
+= form_for @story do |f|
+  = f.label :title, "What is your story called?"
+  %br
+  = f.text_field :title, {size: 50}
+  %br
+  %br
+  = f.label :first_entry, "How does it begin?"
+  %br
+  = f.text_area :first_entry, {size: '50x5', maxlength: 140}
+  %br
+  %br
+  = f.submit "Start Story", class: 'btn btn-primary'

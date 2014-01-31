@@ -14,7 +14,7 @@ class StoriesController < ApplicationController
 
   def create
     @story = Story.new(params.require(:story).permit(:title, :first_entry))
-    @story.user_id = 1
+    @story.user_id = 1 #Change this later!!!
 
     if @story.save
       flash[:success] = 'Your story was successfully saved'

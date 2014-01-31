@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
   def home
     render 'static/about'
   end
+
+  def about
+    render 'static/about'
+  end
 end

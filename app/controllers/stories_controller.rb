@@ -1,7 +1,7 @@
 class StoriesController < ApplicationController
 
   def index
-    @stories = Story.all
+    @stories = Story.finished_stories
   end
 
   def show

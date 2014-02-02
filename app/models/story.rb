@@ -16,4 +16,15 @@ class Story < ActiveRecord::Base
     return finished_stories
   end
 
+  def self.rand_unfinished
+    stories = Story.all
+    unfinished_stories = []
+    stories.each do |story|
+      unfinished_stories << story unless story.finished?
+    end
+
+    return unfinished_stories[rand(unfinished_stories.size)]
+  end
+
+
 end

@@ -1,16 +1,16 @@
 .navbar.navbar-default#top-header
   .container
-    .navbar-text.pull-right 
+    .navbar-text.pull-right
       = link_to 'Login'
-    %h1= link_to 'StoryLines', root_path 
+    %h1= link_to 'StoryLines', root_path
     %ul.nav.navbar-nav.text-center
       %li
         = link_to new_story_path do
-          %span.glyphicon.glyphicon-plus 
+          %span.glyphicon.glyphicon-plus
           New Story
       %vr
       %li
-        = link_to story_path(Story.rand_unfinished) do 
+        = link_to Story.rand_unfinished do
           %span.glyphicon.glyphicon-edit
           Continue Story
       %li

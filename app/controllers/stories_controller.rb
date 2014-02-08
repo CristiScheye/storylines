@@ -5,14 +5,13 @@ class StoriesController < ApplicationController
   end
 
   def show
-    @story = Story.find(params[:id])
+    @story = Story.rand_unfinished
 
     if @story.finished?
       redirect_to stories_path
     else
-    num_entries = @story.entries.size
-    @prev_entry = num_entries == 0 ? @story.first_entry : @story.entries.last
-    @entry = Entry.new
+      @previous_entry = @story.previous_entry
+      @entry = Entry.new
     end
 
   end

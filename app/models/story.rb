@@ -19,4 +19,11 @@ class Story < ActiveRecord::Base
     unfinished.sample
   end
 
+  def previous_entry
+    if self.entries.size == 0
+      self.first_entry
+    else
+      self.entries.last.body
+    end
+  end
 end

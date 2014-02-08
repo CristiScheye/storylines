@@ -12,16 +12,11 @@ class Story < ActiveRecord::Base
   end
 
   def self.unfinished
-    joins(:entries).group("stories.id").having("count(entries.id) < 5")
-  end
-
-  def self.unstarted
-
+    joins('LEFT JOIN entries ON stories.id = entries.story_id').group("stories.id").having("count(entries.id) < 5")
   end
 
   def self.rand_unfinished
-    unfinished.merge(unstarted).sample
+    unfinished.sample
   end
-
 
 end

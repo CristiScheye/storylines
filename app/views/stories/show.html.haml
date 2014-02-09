@@ -1,4 +1,13 @@
 = render 'shared/header', header_title: 'Continue Story'
 
 %h2= @story.title
-%p= @prev_entry
+%p= @previous_entry
+
+= form_for [@story, @entry] do |f|
+  / change later!!!
+  = f.hidden_field :user_id, value: "1"
+  = f.hidden_field :story_id, value: @story.id
+
+  = f.label :body, 'What happens next?'
+  = f.text_area :body
+  = f.submit 'Add your line'

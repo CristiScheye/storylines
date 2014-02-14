@@ -8,16 +8,15 @@
         = link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary'
     %h1= link_to 'StoryLines', root_path
     %ul.nav.navbar-nav.text-center
+      %li= link_to "Home", home_path
       %li
         = link_to new_story_path do
           %span.glyphicon.glyphicon-plus
           New Story
-      %vr
       %li
         = link_to Story.rand_unfinished do
           %span.glyphicon.glyphicon-edit
           Continue Story
       %li
         = link_to 'Read Stories', stories_path
-      %li
-        = link_to 'How it Works', about_path
+

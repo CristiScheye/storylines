@@ -11,6 +11,7 @@ gem 'turbolinks'
 gem 'haml-rails'
 gem 'bootstrap-sass'
 gem 'devise'
+gem 'figaro'
 
 group :development do
   gem 'sqlite3'

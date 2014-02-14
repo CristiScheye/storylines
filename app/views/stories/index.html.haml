@@ -1,4 +1,4 @@
-= render 'shared/header', header_title: 'Read Finished Stories'
+= render 'shared/header', header_title: 'Finished Stories'
 
 .container
   - @stories.each do |story|
@@ -13,6 +13,6 @@
           %sup= "#{index + 2}" 
       .col-md-3.col-md-offset-1
         %ol
-          %li= story.user_id
+          %li= story.user.username
           - story.entries.each do |entry|
-            %li= entry.user_id
+            %li= entry.user.username

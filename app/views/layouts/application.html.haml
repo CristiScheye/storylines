@@ -9,10 +9,10 @@
 
   %body
     %header
-      = render 'shared/navbar'
+      = render 'layouts/navbar'
     %section.content.clearfix
       .container
-        = render 'shared/message'
+        = render 'layouts/message'
         = yield
     %footer
       &copy 2014 StoryLine

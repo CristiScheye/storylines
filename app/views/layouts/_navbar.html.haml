@@ -1,7 +1,11 @@
 .navbar.navbar-default#top-header
   .container
     .navbar-text.pull-right
-      = link_to 'Login'
+      - if user_signed_in?
+        = link_to 'Log Out', destroy_user_session_path, class: 'btn btn-default', method: 'delete'
+      - else
+        = link_to 'Log In', new_user_session_path, class: 'btn btn-default'
+        = link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary'
     %h1= link_to 'StoryLines', root_path
     %ul.nav.navbar-nav.text-center
       %li

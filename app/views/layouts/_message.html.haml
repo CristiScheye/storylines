@@ -1,4 +1,5 @@
--if flash[:success]
-  .notice.alert.alert-success= flash[:success]
--if flash[:error]
-  .notice.alert.alert-danger= flash[:error]
+- flash.each do |type, msg|
+  - if type == :alert || type == :error
+    .notice.alert.alert-danger= msg
+  - elsif type == :success || type == :notice
+    .notice.alert.alert-success= msg

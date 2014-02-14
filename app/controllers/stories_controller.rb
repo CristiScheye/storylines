@@ -1,4 +1,5 @@
 class StoriesController < ApplicationController
+  before_action :authenticate_user!, only: [:show, :new, :create]
 
   def index
     @stories = Story.finished_stories
@@ -22,7 +23,7 @@ class StoriesController < ApplicationController
 
   def create
     @story = Story.new(params.require(:story).permit(:title, :first_entry))
-    @story.user_id = 1 #Change this later!!!
+    @story.user_id = current_user.id
 
     if @story.save
       flash[:success] = 'Your story was successfully saved'

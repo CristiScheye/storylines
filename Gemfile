@@ -10,7 +10,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'haml-rails'
 gem 'bootstrap-sass'
-gem 'pg'
+gem 'devise'
 
 group :development do
   gem 'sqlite3'
@@ -25,5 +25,6 @@ end
 
 
 group :production do
+  gem 'pg'
   gem 'rails_12factor'
 end

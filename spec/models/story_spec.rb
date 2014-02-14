@@ -3,7 +3,7 @@ require "spec_helper"
 describe Story do
 
   before :each do
-    @unfinished_story = Story.create!(title: 'Once upon a time', first_entry: 'whatever')
+    @unfinished_story = Story.create!(title: 'Once upon a time', first_entry: 'whatever', user_id: 1)
     @unfinished_story.entries.create!(body: 'Geese are a great alarm clock')
     @unfinished_story.entries.create!(body: 'Men should not wear tights to the gym :/')
     

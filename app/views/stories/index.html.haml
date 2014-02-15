@@ -1,5 +1,8 @@
 = render 'shared/header', header_title: 'Finished Stories'
 
+- if @stories.nil 
+  %p Sorry, there are no finished stories yet!
+
 .container
   - @stories.each do |story|
     .row

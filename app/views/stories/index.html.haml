@@ -1,6 +1,6 @@
 = render 'shared/header', header_title: 'Finished Stories'
 
-- if @stories.nil? 
+- if @stories.empty?
   %p Sorry, there are no finished stories yet!
 
 .container

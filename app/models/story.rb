@@ -1,8 +1,8 @@
 class Story < ActiveRecord::Base
   has_many :entries
   belongs_to :user
-  validates :title, presence: true, length: {maximum: 30}
-  validates :first_entry, length: {minimum: 3, maximum: 100}
+  validates :title, presence: true, length: {maximum: 50}
+  validates :first_entry, length: {minimum: 3, maximum: 150}
 
   def finished?
     self.entries.size >= 5

@@ -11,7 +11,6 @@ class StoriesController < ApplicationController
     if @story.finished?
       redirect_to stories_path
     else
-      @previous_entry = @story.previous_entry
       @entry = Entry.new
     end
 

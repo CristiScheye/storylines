@@ -1,7 +1,11 @@
 = render 'shared/header', header_title: 'Continue Story'
 
+- if @entry.errors.any?
+  = render 'shared/errors', obj: @entry
+
+
 %h2= @story.title
-%p= @previous_entry
+%p= @story.previous_entry
 
 = form_for [@story, @entry] do |f|
   = f.hidden_field :user_id, value: current_user.id

@@ -5,7 +5,7 @@ describe UnfinishedStoriesController do
   describe "GET #show" do
 
     context "when user logged in" do
-      
+
       let(:current_user) do
         User.create!(username: 'Dr. Seuss', email: 'greeneggs@ham.com', password: '1fish2f!sh')
       end
@@ -50,6 +50,10 @@ describe UnfinishedStoriesController do
     end
 
     context "when no user is logged in" do
+      it "redirects to login page" do
+        get :show
+        expect(response).to redirect_to(new_user_session_path)
+      end
     end
   end
 

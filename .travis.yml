@@ -1,0 +1,8 @@
+language: ruby
+rvm:
+- 2.1.0
+deploy:
+  provider: heroku
+  api_key:
+    secure: mgqZTDSrZphRPJUmSybm//KHewRMhidXfH11c7lFbwrV7ktfHn0xfBQjurfszke9HqkJUH1pvs8OSrBLQVnB1PsSUbbJk/k/st7Bd4DyBOBSuGd0ATyuAl/wESjcuuz5lS757wCAmLi3uaoCI9+cZV2/arQX01X0ETPv5Dd81lM=
+  app: storylines-app

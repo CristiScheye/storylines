@@ -7,7 +7,7 @@ class EntriesController < ApplicationController
 
     if @entry.save
       flash[:success] = 'Your entry was saved. Write another!'
-      redirect_to Story.rand_unfinished
+      redirect_to unfinished_story_path
     else
       flash[:alert] = 'Hmmm... Something went wrong. Your entry was not saved.'
       render 'stories/show'

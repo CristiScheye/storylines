@@ -4,9 +4,7 @@ class Story < ActiveRecord::Base
   validates :title, presence: true, length: {maximum: 50}
   validates :first_entry, length: {minimum: 3, maximum: 150}
 
-  def finished?
-    self.entries.size >= 5
-  end
+
 
   def self.finished_stories
     joins(:entries).group("stories.id").having("count(entries.id) >= 5")
@@ -16,8 +14,8 @@ class Story < ActiveRecord::Base
     joins('LEFT JOIN entries ON stories.id = entries.story_id').group("stories.id").having("count(entries.id) < 5")
   end
 
-  def self.rand_unfinished
-    unfinished.sample
+  def self.for_users_other_than(user)
+    where.not(user: user)
   end
 
   def previous_entry
@@ -26,5 +24,9 @@ class Story < ActiveRecord::Base
     else
       self.entries.last.body
     end
+  end
+
+  def finished?
+    self.entries.size >= 5
   end
 end

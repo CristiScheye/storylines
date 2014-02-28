@@ -9,4 +9,5 @@ Storyline::Application.routes.draw do
     resources :entries, only: [:create]
   end
 
+  resource :unfinished_story, only: [:show]
 end

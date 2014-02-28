@@ -6,7 +6,7 @@ class StoriesController < ApplicationController
   end
 
   def show
-    @story = Story.rand_unfinished
+    @story = Story.find(params[:id])
 
     if @story.finished?
       redirect_to stories_path

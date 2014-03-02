@@ -18,6 +18,10 @@ class Story < ActiveRecord::Base
     where.not(user: user)
   end
 
+  def self.for_prev_entries_not_by(user)
+    where(id: Entry.previous_by_users_other_than(user).pluck(:story_id))
+  end
+
   def previous_entry
     if self.entries.size == 0
       self.first_entry

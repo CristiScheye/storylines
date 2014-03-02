@@ -14,18 +14,37 @@ describe UnfinishedStoriesController do
         sign_in current_user
       end
 
-      context "when there is an unfinished story for another user" do 
-        it "redirects to that story" do
-          another_user = User.create!(username: 'Dude Looks Like a Lady', email: 'somebody@email.com', password: 'password')
-          unfinished_story = Story.create!(title: 'Once upon a time', first_entry: 'whatever', user_id: another_user.id)
-          unfinished_story.entries.create!(body: 'Geese are a great alarm clock')
+      # context "when there is an unfinished story started by another user" do 
+      #   it "redirects to that story" do
+      #     pending
+      #     another_user = User.create!(username: 'Dude Looks Like a Lady', email: 'somebody@email.com', password: 'password')
+      #     unfinished_story = Story.create!(title: 'Once upon a time', first_entry: 'whatever', user_id: another_user.id)
+      #     unfinished_story.entries.create!(body: 'Geese are a great alarm clock')
+      #     get :show
+      #     expect(response).to redirect_to(unfinished_story)
+      #   end
+      # end
+
+      context "when there is an unfinished story with additional entries" do
+        before do
+          @another_user = User.create!(username: 'Dude Looks Like a Lady', email: 'somebody@email.com', password: 'password')
+          @unfinished_story = Story.create!(title: 'Once upon a time', first_entry: 'whatever', user_id: @another_user.id)
+          @unfinished_story.entries.create!(body: 'Geese are a great alarm clock', user_id: @another_user.id)
           get :show
-          expect(response).to redirect_to(unfinished_story)
         end
 
+        it "redirects to story with previous entry by another user" do
+          expect(response).to redirect_to(@unfinished_story)
+        end
+
+        it "does not redirect to story with previous entry by current user" do
+          story_by_user = Story.create!(title: 'Ughh', first_entry: 'frustration')
+          story_by_user.entries.create!(body: 'Unfortunately, MUNI might be better', user_id: current_user.id)
+          expect(response).to_not redirect_to(story_by_user)
+        end
       end
 
-      context "when there is an unfinished story for current user" do
+      context "when there is an unfinished story by current user" do
         it "redirects to the new story page" do
           relevant = Story.create!(title: 'The Places You Will Go', first_entry: 'Paris', user_id: current_user.id)
           get :show

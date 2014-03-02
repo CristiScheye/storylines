@@ -1,7 +1,8 @@
 class UnfinishedStoriesController < ApplicationController
   before_action :authenticate_user!, only: [:show]
   def show
-    random_story = Story.unfinished.for_users_other_than(current_user).sample
+    random_story = Story.for_prev_entries_not_by(current_user).unfinished
+    .sample
 
     if random_story.nil?
       flash[:notice] = "Sorry, no unfinished stories to add to right now."

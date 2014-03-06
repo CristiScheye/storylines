@@ -4,6 +4,6 @@ class Entry < ActiveRecord::Base
   validates :body, length: {minimum: 3, maximum: 150}
 
   def self.previous_by_users_other_than(user)
-    where(id: Entry.group(:story_id).having("max(created_at)")).where.not(user: user)
+    where(id: Entry.group(:story_id).order("created_at desc")).where.not(user: user)
   end
 end

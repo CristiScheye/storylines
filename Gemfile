@@ -12,6 +12,7 @@ gem 'haml-rails'
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'figaro'
+gem 'unicorn'
 
 group :development do
   gem 'sqlite3'

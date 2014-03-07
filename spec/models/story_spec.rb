@@ -24,8 +24,12 @@ describe Story do
   end
 
   describe ".unfinished" do
-    it "returns unfinished stories" do
-      expect(Story.unfinished).to eq([@unfinished_story, @unstarted_story])
+    it "returns an unfinished story" do
+      expect(Story.unfinished).to include(@unfinished_story) 
+    end
+    
+    it "returns an unstarted story" do
+      expect(Story.unfinished).to include(@unstarted_story)
     end
   end
 

@@ -5,18 +5,19 @@
 
 .container
   - @stories.each do |story|
-    .row
-      .col-md-11.col-md-offset-1
-        %h3= story.title
-      .col-md-7.col-lg-7.col-md-offset-1.col-lg-offset-1
-        = story.first_entry
-        %sup 1
-        - story.entries.each_with_index do |entry, index|
-          = entry.body
-          %sup= "#{index + 2}" 
-      .col-md-3.col-md-offset-1
-        %h4 Authors
-        %ol
-          %li= story.user.username
-          - story.entries.each do |entry|
-            %li= entry.user.username
+    .well
+      .row
+        .col-md-11.col-md-offset-1
+          %h3= story.title
+        .col-md-7.col-lg-7.col-md-offset-1.col-lg-offset-1
+          = story.first_entry
+          %sup 1
+          - story.entries.each_with_index do |entry, index|
+            = entry.body
+            %sup= "#{index + 2}" 
+        .col-md-3.col-md-offset-1
+          %h4 Authors
+          %ol
+            %li= story.user.username
+            - story.entries.each do |entry|
+              %li= entry.user.username

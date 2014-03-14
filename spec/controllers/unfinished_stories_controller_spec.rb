@@ -62,7 +62,7 @@ describe UnfinishedStoriesController do
         end
 
         it "tells the user there are no unfinished stories" do
-          expect(flash[:notice]).to eq("Sorry, no unfinished stories to add to right now.")
+          expect(flash[:notice]).to eq("Sorry, no unfinished stories to add to right now. Would you like to start a new one?")
         end
       end
 

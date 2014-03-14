@@ -7,11 +7,13 @@ class Story < ActiveRecord::Base
 
 
   def self.finished_stories
-    joins(:entries).group("stories.id").having("count(entries.id) >= 5")
+    # joins(:entries).group("stories.id").having("count(entries.id) >= 5")
+    where(finished: true)
   end
 
   def self.unfinished
-    joins('LEFT JOIN entries ON stories.id = entries.story_id').group("stories.id").having("count(entries.id) < 5")
+    # joins('LEFT JOIN entries ON stories.id = entries.story_id').group("stories.id").having("count(entries.id) < 5")
+    where(finished: false)
   end
 
   def self.for_users_other_than(user)
@@ -28,9 +30,5 @@ class Story < ActiveRecord::Base
     else
       self.entries.last.body
     end
-  end
-
-  def finished?
-    self.entries.size >= 5
   end
 end

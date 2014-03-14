@@ -15,5 +15,7 @@
   %br
   = f.text_area :body
   %br
+  = check_box_tag :story_status
+  = label_tag :story_status, 'Finish this story'
   %br
   = f.submit 'Add your line', class: 'btn btn-primary'

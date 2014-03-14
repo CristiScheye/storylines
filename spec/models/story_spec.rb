@@ -12,8 +12,7 @@ describe Story do
     @other_user = User.create!(username: 'Hello', email: 'other@gmail.com', password: 'original')
     @unstarted_story = Story.create!(title: 'Nope.', first_entry: 'Not gonna happen.', user_id: @other_user.id)
     
-    @finished_story = Story.create!(title: 'This again?', first_entry: 'Oh noes!')
-    5.times {@finished_story.entries.create!(body: 'Repeat!')}
+    @finished_story = Story.create!(title: 'This again?', first_entry: 'Oh noes!', finished: true)
 
   end
 

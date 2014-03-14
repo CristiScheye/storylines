@@ -3,9 +3,12 @@ class EntriesController < ApplicationController
 
   def create
     @story = Story.find(params[:story_id])
+    @story.finished = true if params[:story_status] == '1'
+
     @entry = Entry.new(params.require(:entry).permit(:body, :user_id, :story_id))
 
     if @entry.save
+      @story.save #save in case status changed
       flash[:success] = 'Your entry was saved. Write another!'
       redirect_to unfinished_story_path
     else

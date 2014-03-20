@@ -28,7 +28,7 @@ describe Story do
     end
     
     it "returns an unstarted story" do
-      expect(Story.unfinished).to include(@unstarted_story)
+      expect(Story.unstarted).to include(@unstarted_story)
     end
   end
 

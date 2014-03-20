@@ -16,6 +16,10 @@ class Story < ActiveRecord::Base
     where(finished: false)
   end
 
+  def self.unstarted
+    includes(:entries).where(:entries => {id: nil})
+  end
+
   def self.for_users_other_than(user)
     where.not(user: user)
   end

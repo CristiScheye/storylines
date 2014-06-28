@@ -55,5 +55,19 @@ describe Story do
     end
   end
 
+  describe ".author" do
+    context "when authored by a logged in user" do
+      it("returns the username") do 
+        expect(@unfinished_story.author).to eq(@current_user.username)
+      end
+    end
+
+    context "when authored by a visitor" do 
+      it "returns the author_name" do 
+        story = Story.create!(title: 'TGIF', first_entry: 'This weekend is PRIDE!', author_name: 'TGIF')
+        expect(story.author).to eq(story.author_name)
+      end
+    end
+  end
 
 end

@@ -4,8 +4,6 @@ class Story < ActiveRecord::Base
   validates :title, presence: true, length: {maximum: 50}
   validates :first_entry, length: {minimum: 3, maximum: 150}
 
-
-
   def self.finished_stories
     # joins(:entries).group("stories.id").having("count(entries.id) >= 5")
     where(finished: true)
@@ -34,5 +32,9 @@ class Story < ActiveRecord::Base
     else
       self.entries.last.body
     end
+  end
+
+  def author
+    self.author_name || self.user.username
   end
 end

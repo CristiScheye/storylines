@@ -4,13 +4,13 @@ require 'database_cleaner'
 describe Entry do
   Story.delete_all
 
+  before do
+    @current_user = User.create!(username: 'Dr. Seuss', email: 'greeneggs@ham.com', password: '1fish2f!sh')
+    @first_story = Story.create!(title: 'Running', first_entry: "I can't wait to run again")
+    @entry_by_current_user = Entry.create!(body: "WWDSD?", story_id: @first_story.id, user_id: @current_user.id)
+  end
   context "when user signed in" do
 
-    before do
-      @current_user = User.create!(username: 'Dr. Seuss', email: 'greeneggs@ham.com', password: '1fish2f!sh')
-      first_story = Story.create!(title: 'Running', first_entry: "I can't wait to run again")
-      by_current = Entry.create!(body: "WWDSD?", story_id: first_story.id, user_id: @current_user.id)
-    end
 
 
     describe ".previous_by_users_other_than" do
@@ -33,6 +33,21 @@ describe Entry do
       end
     end
 
+  end
+
+  describe ".author" do
+    context "when authored by a logged in user" do
+      it("returns the username") do 
+        expect(@entry_by_current_user.author).to eq(@current_user.username)
+      end
+    end
+
+    context "when authored by a visitor" do 
+      it "returns the author_name" do 
+        entry = Entry.create!(body: "Hello world", author_name: 'Fudge')
+        expect(entry.author).to eq(entry.author_name)
+      end
+    end
   end
 end
 

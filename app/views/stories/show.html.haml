@@ -8,13 +8,17 @@
 %p= @story.previous_entry
 
 = form_for [@story, @entry] do |f|
-  = f.hidden_field :user_id, value: current_user.id
   = f.hidden_field :story_id, value: @story.id
   %br
   = f.label :body, 'What happens next?'
   %br
   = f.text_area :body
   %br
+  - unless user_signed_in?
+    = f.label :author_name, "What's your pen name?"
+    %br
+    = f.text_field :author_name
+    %br
   = check_box_tag :story_status
   = label_tag :story_status, 'Finish this story'
   %br

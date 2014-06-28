@@ -18,6 +18,6 @@
         .col-md-3.col-md-offset-1
           %h4 Authors
           %ol
-            %li= story.user.username
+            %li= story.author
             - story.entries.each do |entry|
-              %li= entry.user.username
+              %li= entry.author
